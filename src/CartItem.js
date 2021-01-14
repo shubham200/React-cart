@@ -2,42 +2,15 @@ import React from 'react';
 
 class CartItem extends React.Component {
 
-    constructor() {
-        super();
-        this.state = {
-            price:11999,
-            title:'OnePlus 5',
-            qty:1,
-            img:''
-        }
-    }
 
-    increaseQuantity=() => {
-         console.log(this.state.qty)
-         this.setState((prevState) => {
-             return {
-                 qty : prevState.qty+1
-             }
-         })
-    }
-
-    decreaseQuantity=() => {
-        const {qty} = this.state
-        if(qty===0)
-        {
-            return;
-        }
-        console.log(this.state.qty)
-        this.setState((prevState) => {
-            return {
-                qty:prevState.qty -1
-            }
-        })
-    }
     render() {
-        const {price,title,qty} = this.state;
+        console.log(this.props)
+        const {price,title,qty} = this.props.product;
+        const {product,onIncreaseQuantity,onDecreaseQuantity,onDeleteProduct}=this.props
         return (
+
          <div className="cart-item">
+         {this.props.jsx}
          <div className="left-block">
             <img style={styles.image} src="https://static.toiimg.com/photo/59267498.cms" />
          </div>
@@ -51,18 +24,19 @@ class CartItem extends React.Component {
             className="action-icons" 
             alt="+" 
             src="https://www.flaticon.com/svg/vstatic/svg/159/159690.svg?token=exp=1610500754~hmac=0f2a3d90319f57df5d45608bcf22ec5f"
-            onClick={this.increaseQuantity}
+            onClick={() =>onIncreaseQuantity(product)}
             />
             <img 
             className="action-icons" 
             alt="-"
             src="https://www.flaticon.com/svg/vstatic/svg/1828/1828906.svg?token=exp=1610500881~hmac=e88e3934057e245f28e27042ad698f37"
-            onClick={this.decreaseQuantity}
+            onClick={()=>onDecreaseQuantity(product)}
             />
             <img 
             className="action-icons" 
             alt="x" 
             src="https://www.flaticon.com/svg/vstatic/svg/3209/3209887.svg?token=exp=1610500957~hmac=dedeb2a886a08871cf7e5cf341084e3f"
+            onClick={() =>onDeleteProduct(product.id)}
             />
             </div>
          </div>
