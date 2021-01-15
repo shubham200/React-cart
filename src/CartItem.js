@@ -1,18 +1,16 @@
 import React from 'react';
 
-class CartItem extends React.Component {
+const CartItem =(props)=> {
 
 
-    render() {
-        console.log(this.props)
-        const {price,title,qty} = this.props.product;
-        const {product,onIncreaseQuantity,onDecreaseQuantity,onDeleteProduct}=this.props
+        
+        const {price,title,qty,img} = props.product;
+        const {product,onIncreaseQuantity,onDecreaseQuantity,onDeleteProduct}=props
         return (
 
          <div className="cart-item">
-         {this.props.jsx}
          <div className="left-block">
-            <img style={styles.image} src="https://static.toiimg.com/photo/59267498.cms" />
+            <img style={styles.image} src={img} />
          </div>
          <div className="right-block">
          <div style={{fontSize:25}}>{title}</div>
@@ -23,26 +21,26 @@ class CartItem extends React.Component {
             <img
             className="action-icons" 
             alt="+" 
-            src="https://www.flaticon.com/svg/vstatic/svg/159/159690.svg?token=exp=1610500754~hmac=0f2a3d90319f57df5d45608bcf22ec5f"
+            src="https://www.flaticon.com/svg/vstatic/svg/1828/1828926.svg?token=exp=1610735838~hmac=6b9f9c9b00d120554ba145f6849779c3"
             onClick={() =>onIncreaseQuantity(product)}
             />
             <img 
             className="action-icons" 
             alt="-"
-            src="https://www.flaticon.com/svg/vstatic/svg/1828/1828906.svg?token=exp=1610500881~hmac=e88e3934057e245f28e27042ad698f37"
+            src="https://www.flaticon.com/svg/vstatic/svg/1828/1828906.svg?token=exp=1610735912~hmac=c273db7734e852a0c9bc011d55a6b7d4"
             onClick={()=>onDecreaseQuantity(product)}
             />
             <img 
             className="action-icons" 
             alt="x" 
-            src="https://www.flaticon.com/svg/vstatic/svg/3209/3209887.svg?token=exp=1610500957~hmac=dedeb2a886a08871cf7e5cf341084e3f"
+            src="https://www.flaticon.com/svg/vstatic/svg/3964/3964085.svg?token=exp=1610735963~hmac=8e1c21379752018237c6ee0973fcf881"
             onClick={() =>onDeleteProduct(product.id)}
             />
             </div>
          </div>
          </div>   
         );
-    }
+    
 }
 
 const styles = {
